@@ -8,18 +8,18 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Users\V1\StoreRequest;
 use App\Http\Resources\Users\V1\UserResource;
 use App\Models\User;
-use App\Responses\ModelResponse;
+use Illuminate\Http\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 
 class StoreController extends Controller
 {
-    public function __invoke(StoreRequest $request): ModelResponse
+    public function __invoke(StoreRequest $request): JsonResponse
     {
         $user = User::create($request->validated());
 
-        return new ModelResponse(
+        return new JsonResponse(
             data: new UserResource($user),
-            status: Response::HTTP_CREATED
+            status: Response::HTTP_CREATED,
         );
     }
 }
