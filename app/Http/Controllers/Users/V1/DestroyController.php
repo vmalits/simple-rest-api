@@ -6,6 +6,8 @@ namespace App\Http\Controllers\Users\V1;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Responses\MessageResponse;
+use Symfony\Component\HttpFoundation\Response;
 
 class DestroyController extends Controller
 {
@@ -13,6 +15,9 @@ class DestroyController extends Controller
     {
         $user->delete();
 
-        return response()->noContent();
+        return new MessageResponse(
+            data: 'User deleted successfully',
+            status: Response::HTTP_NO_CONTENT,
+        );
     }
 }

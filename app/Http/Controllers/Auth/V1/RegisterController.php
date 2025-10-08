@@ -10,6 +10,7 @@ use App\Http\Support\Result;
 use App\Responses\TokenResponse;
 use App\Services\IdentityService;
 use Symfony\Component\HttpFoundation\Response;
+use Throwable;
 
 class RegisterController extends Controller
 {
@@ -17,7 +18,10 @@ class RegisterController extends Controller
     {
     }
 
-    public function __invoke(RegistrationRequest $request)
+    /**
+     * @throws Throwable
+     */
+    public function __invoke(RegistrationRequest $request): TokenResponse
     {
         $result = $this->identityService->register($request->payload());
 
