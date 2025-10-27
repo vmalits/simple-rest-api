@@ -154,8 +154,8 @@ You can switch the language used with the tabs at the top right (or from the nav
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"email\": \"gbailey@example.net\",
-    \"password\": \"+-0pBNvYgxwmi\\/#iw\"
+    \"email\": \"johndoe@gmail.com\",
+    \"password\": \"strongpassword123\"
 }"
 </code></pre></div>
 
@@ -171,8 +171,8 @@ const headers = {
 };
 
 let body = {
-    "email": "gbailey@example.net",
-    "password": "+-0pBNvYgxwmi\/#iw"
+    "email": "johndoe@gmail.com",
+    "password": "strongpassword123"
 };
 
 fetch(url, {
@@ -193,8 +193,8 @@ $response = $client-&gt;post(
             'Accept' =&gt; 'application/json',
         ],
         'json' =&gt; [
-            'email' =&gt; 'gbailey@example.net',
-            'password' =&gt; '+-0pBNvYgxwmi/#iw',
+            'email' =&gt; 'johndoe@gmail.com',
+            'password' =&gt; 'strongpassword123',
         ],
     ]
 );
@@ -208,8 +208,8 @@ import json
 
 url = 'http://localhost/api/v1/login'
 payload = {
-    "email": "gbailey@example.net",
-    "password": "+-0pBNvYgxwmi\/#iw"
+    "email": "johndoe@gmail.com",
+    "password": "strongpassword123"
 }
 headers = {
   'Content-Type': 'application/json',
@@ -302,10 +302,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="email"                data-endpoint="POSTapi-v1-login"
-               value="gbailey@example.net"
+               value="johndoe@gmail.com"
                data-component="body">
     <br>
-<p>Must be a valid email address. Must not be greater than 255 characters. Example: <code>gbailey@example.net</code></p>
+<p>Example: <code>johndoe@gmail.com</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>password</code></b>&nbsp;&nbsp;
@@ -314,10 +314,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="password"                data-endpoint="POSTapi-v1-login"
-               value="+-0pBNvYgxwmi/#iw"
+               value="strongpassword123"
                data-component="body">
     <br>
-<p>Must be at least 8 characters. Must not be greater than 255 characters. Example: <code>+-0pBNvYgxwmi/#iw</code></p>
+<p>Example: <code>strongpassword123</code></p>
         </div>
         </form>
 
