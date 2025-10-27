@@ -9,9 +9,12 @@ use App\Http\Requests\Auth\V1\RegistrationRequest;
 use App\Http\Support\Result;
 use App\Responses\TokenResponse;
 use App\Services\IdentityService;
+use Knuckles\Scribe\Attributes\BodyParam;
+use Knuckles\Scribe\Attributes\Group;
 use Symfony\Component\HttpFoundation\Response;
 use Throwable;
 
+#[Group('Auth')]
 class RegisterController extends Controller
 {
     public function __construct(private readonly IdentityService $identityService)
@@ -21,6 +24,10 @@ class RegisterController extends Controller
     /**
      * @throws Throwable
      */
+    #[BodyParam('name', 'string', required: true, example: 'John Doe')]
+    #[BodyParam('email', 'string', required: true, example: 'johndoe@gmail.com')]
+    #[BodyParam('password', 'string', required: true, example: 'strongpassword123')]
+    #[BodyParam('password_confirmation', 'string', required: true, example: 'strongpassword123')]
     public function __invoke(RegistrationRequest $request): TokenResponse
     {
         $result = $this->identityService->register($request->payload());
