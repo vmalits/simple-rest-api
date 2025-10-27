@@ -90,3 +90,92 @@ endpoints:
     controller: null
     method: null
     route: null
+  -
+    custom: []
+    httpMethods:
+      - POST
+    uri: api/v1/users
+    metadata:
+      custom: []
+      groupName: Users
+      groupDescription: 'Endpoints related to user management.'
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Create user'
+      description: 'Creates a new user and returns the created resource. Requires authentication.'
+      authenticated: true
+      deprecated: false
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      name:
+        custom: []
+        name: name
+        description: "The user's full name."
+        required: true
+        example: 'Alice Example'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      email:
+        custom: []
+        name: email
+        description: "The user's email address."
+        required: true
+        example: alice@example.com
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+      password:
+        custom: []
+        name: password
+        description: "The user's password."
+        required: true
+        example: P@ssw0rd!23
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        deprecated: false
+    cleanBodyParameters:
+      name: 'Alice Example'
+      email: alice@example.com
+      password: P@ssw0rd!23
+    fileParameters: []
+    responses:
+      -
+        custom: []
+        status: 201
+        content: '{"data":{"id":1,"name":"Alice Example","email":"alice@example.com","created_at":"2025-10-27T12:00:00Z","updated_at":"2025-10-27T12:00:00Z"}}'
+        headers: []
+        description: 'User created successfully.'
+      -
+        custom: []
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers: []
+        description: Unauthorized.
+      -
+        custom: []
+        status: 422
+        content: '{"message":"The given data was invalid.","errors":{"email":["The email has already been taken."]}}'
+        headers: []
+        description: 'Validation error.'
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g43cv8PD1aE5beadkZfhV6'
+    controller: null
+    method: null
+    route: null
