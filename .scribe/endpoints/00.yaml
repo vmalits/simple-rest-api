@@ -27,9 +27,9 @@ endpoints:
       email:
         custom: []
         name: email
-        description: 'Must be a valid email address. Must not be greater than 255 characters.'
+        description: ''
         required: true
-        example: gbailey@example.net
+        example: johndoe@gmail.com
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -38,17 +38,17 @@ endpoints:
       password:
         custom: []
         name: password
-        description: 'Must be at least 8 characters. Must not be greater than 255 characters.'
+        description: ''
         required: true
-        example: '+-0pBNvYgxwmi/#iw'
+        example: strongpassword123
         type: string
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         deprecated: false
     cleanBodyParameters:
-      email: gbailey@example.net
-      password: '+-0pBNvYgxwmi/#iw'
+      email: johndoe@gmail.com
+      password: strongpassword123
     fileParameters: []
     responses: []
     responseFields: []
