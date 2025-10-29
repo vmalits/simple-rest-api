@@ -29,8 +29,6 @@ class StoreController extends Controller
             'id' => 1,
             'name' => 'Alice Example',
             'email' => 'alice@example.com',
-            'created_at' => '2025-10-27T12:00:00Z',
-            'updated_at' => '2025-10-27T12:00:00Z',
         ],
     ], status: 201, description: 'User created successfully.')]
     #[ScribeResponse([
