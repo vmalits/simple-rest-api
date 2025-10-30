@@ -17,7 +17,7 @@ use Knuckles\Scribe\Attributes\BodyParam;
 use Knuckles\Scribe\Attributes\Response as ScribeResponse;
 
 #[Group('Users', 'Endpoints related to user management.')]
-class StoreController extends Controller
+final class StoreController extends Controller
 {
     #[Endpoint('Create user', 'Creates a new user and returns the created resource. Requires authentication.')]
     #[Authenticated]

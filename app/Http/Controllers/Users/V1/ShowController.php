@@ -15,7 +15,7 @@ use Knuckles\Scribe\Attributes\Response as ScribeResponse;
 use Symfony\Component\HttpFoundation\Response;
 
 #[Group('Users', 'Endpoints related to user management.')]
-class ShowController extends Controller
+final class ShowController extends Controller
 {
     #[Endpoint('Show user', 'Retrieve a single user by ID. Returns detailed user information.')]
     #[Authenticated]

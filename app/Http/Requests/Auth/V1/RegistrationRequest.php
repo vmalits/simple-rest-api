@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Requests\Auth\V1;
 
-use App\Http\Dtos\Auth\V1\RegistrationData;
+use App\Dtos\Auth\V1\RegistrationData;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rules\Password;
 

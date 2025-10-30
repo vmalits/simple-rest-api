@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Requests\Auth\V1;
 
-use App\Http\Dtos\Auth\V1\LoginData;
+use App\Dtos\Auth\V1\LoginData;
 use Illuminate\Foundation\Http\FormRequest;
 
 class LoginRequest extends FormRequest

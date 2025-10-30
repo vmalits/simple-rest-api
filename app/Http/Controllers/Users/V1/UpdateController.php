@@ -17,7 +17,7 @@ use Knuckles\Scribe\Attributes\Response as ScribeResponse;
 use Symfony\Component\HttpFoundation\Response;
 
 #[Group('Users', 'Endpoints related to user management.')]
-class UpdateController extends Controller
+final class UpdateController extends Controller
 {
     #[Endpoint('Update user', 'Updates an existing user and returns the updated resource.')]
     #[Authenticated]

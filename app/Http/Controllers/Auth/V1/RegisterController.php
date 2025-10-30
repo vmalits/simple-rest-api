@@ -15,7 +15,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Throwable;
 
 #[Group('Auth')]
-class RegisterController extends Controller
+final class RegisterController extends Controller
 {
     public function __construct(private readonly IdentityService $identityService)
     {
