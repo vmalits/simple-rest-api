@@ -16,7 +16,7 @@ use Knuckles\Scribe\Attributes\Group;
 use Symfony\Component\HttpFoundation\Response;
 
 #[Group('Auth')]
-class LoginController extends Controller
+final class LoginController extends Controller
 {
     public function __construct(private readonly IdentityService $identityService)
     {

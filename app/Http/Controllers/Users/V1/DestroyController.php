@@ -15,7 +15,7 @@ use Knuckles\Scribe\Attributes\UrlParam;
 use Symfony\Component\HttpFoundation\Response;
 
 #[Group('Users', 'Endpoints related to user management.')]
-class DestroyController extends Controller
+final class DestroyController extends Controller
 {
     #[Endpoint('Delete user', 'Deletes an existing user by ID. Requires authentication.')]
     #[Authenticated]

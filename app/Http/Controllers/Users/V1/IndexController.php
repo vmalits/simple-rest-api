@@ -18,7 +18,7 @@ use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
 
 #[Group('Users', 'Endpoints related to user management.')]
-class IndexController extends Controller
+final class IndexController extends Controller
 {
     #[Endpoint('List users', 'Get a paginated list of users.')]
     #[Authenticated]
