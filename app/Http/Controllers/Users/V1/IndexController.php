@@ -7,6 +7,7 @@ namespace App\Http\Controllers\Users\V1;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Users\V1\UserCollection;
 use App\Models\User;
+use App\Queries\Users\ListUsers;
 use Illuminate\Http\Request;
 use Knuckles\Scribe\Attributes\Authenticated;
 use Knuckles\Scribe\Attributes\Group;
@@ -20,6 +21,10 @@ use Spatie\QueryBuilder\QueryBuilder;
 #[Group('Users', 'Endpoints related to user management.')]
 final class IndexController extends Controller
 {
+    public function __construct(private ListUsers $listUsers)
+    {
+    }
+
     #[Endpoint('List users', 'Get a paginated list of users.')]
     #[Authenticated]
     #[QueryParam('per_page', 'integer', 'Number of users per page (1–100).', example: 10)]
@@ -49,14 +54,7 @@ final class IndexController extends Controller
         $perPage = max(1, min($perPage, 100));
 
         return new UserCollection(
-            resource: QueryBuilder::for(User::class)
-                ->allowedFilters([
-                    AllowedFilter::exact('name'),
-                    AllowedFilter::exact('email')
-                ])
-                ->allowedSorts('name')
-                ->paginate($perPage)
-                ->withQueryString()
+            resource: $this->listUsers->handle()->paginate($perPage)
         );
     }
 }
