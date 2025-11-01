@@ -21,13 +21,13 @@ final class DestroyController extends Controller
     #[Authenticated]
     #[UrlParam('id', 'integer', 'The ID of the user to delete.', example: 1)]
     #[ScribeResponse([
-        'message' => 'User deleted successfully'
+        'message' => 'User deleted successfully',
     ], status: 204, description: 'User deleted successfully.')]
     #[ScribeResponse([
-        'message' => 'Unauthenticated.'
+        'message' => 'Unauthenticated.',
     ], status: 401, description: 'Unauthorized.')]
     #[ScribeResponse([
-        'message' => 'No query results for model [App\\Models\\User] 999.'
+        'message' => 'No query results for model [App\\Models\\User] 999.',
     ], status: 404, description: 'User not found.')]
     public function __invoke(User $user): MessageResponse
     {
@@ -35,7 +35,7 @@ final class DestroyController extends Controller
 
         return new MessageResponse(
             data: 'User deleted successfully',
-            status: Response::HTTP_NO_CONTENT
+            status: Response::HTTP_NO_CONTENT,
         );
     }
 }

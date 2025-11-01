@@ -1,3 +1,77 @@
 {
-  "preset": "psr12"
+  "preset": "laravel",
+  "rules": {
+    "declare_strict_types": true,
+    "ordered_imports": {
+      "sort_algorithm": "alpha",
+      "imports_order": ["class", "function", "const"]
+    },
+    "no_unused_imports": true,
+    "no_superfluous_phpdoc_tags": true,
+    "phpdoc_align": {
+      "align": "left"
+    },
+    "phpdoc_order": true,
+    "phpdoc_to_comment": false,
+    "blank_line_after_namespace": true,
+    "blank_line_after_opening_tag": true,
+    "class_attributes_separation": {
+      "elements": {
+        "const": "one",
+        "method": "one",
+        "property": "one",
+        "trait_import": "one"
+      }
+    },
+    "method_argument_space": {
+      "on_multiline": "ensure_fully_multiline"
+    },
+    "single_trait_insert_per_statement": true,
+    "trailing_comma_in_multiline": {
+      "after_heredoc": true,
+      "elements": ["arrays", "arguments", "parameters"]
+    },
+    "global_namespace_import": {
+      "import_classes": true,
+      "import_constants": true,
+      "import_functions": true
+    },
+    "nullable_type_declaration": {
+      "syntax": "question_mark"
+    },
+    "single_line_empty_body": false,
+    "explicit_string_variable": true,
+    "strict_comparison": true,
+    "strict_param": true,
+    "no_trailing_comma_in_singleline_array": true,
+    "combine_consecutive_unsets": true,
+    "ternary_to_null_coalescing": true,
+    "array_syntax": {
+      "syntax": "short"
+    },
+    "no_whitespace_in_blank_line": true,
+    "trim_array_spaces": true,
+    "compact_nullable_typehint": true,
+    "no_extra_blank_lines": {
+      "tokens": ["extra"]
+    },
+    "return_type_declaration": {
+      "space_before": "none"
+    },
+    "binary_operator_spaces": {
+      "default": "single_space",
+      "operators": {
+        "=>": "align_single_space_minimal"
+      }
+    },
+    "logical_operators": true,
+    "no_unreachable_default_argument_value": true,
+    "simplified_null_return": true,
+    "yoda_style": {
+      "equal": false,
+      "identical": false,
+      "less_and_greater": false
+    },
+    "fully_qualified_strict_types": true
+  }
 }

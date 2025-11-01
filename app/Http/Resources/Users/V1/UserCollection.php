@@ -22,8 +22,8 @@ class UserCollection extends ResourceCollection
     public function toArray(Request $request): array
     {
         return [
-            'data' => $this->collection,
-            'meta' => $this->meta(),
+            'data'  => $this->collection,
+            'meta'  => $this->meta(),
             'links' => $this->links(),
         ];
     }
@@ -33,18 +33,18 @@ class UserCollection extends ResourceCollection
      */
     protected function meta(): array
     {
-        if (!$this->resource instanceof AbstractPaginator) {
+        if (! $this->resource instanceof AbstractPaginator) {
             return [];
         }
 
         return [
             'current_page' => $this->resource->currentPage(),
-            'from' => $this->resource->firstItem(),
-            'last_page' => $this->resource->lastPage(),
-            'path' => $this->resource->path(),
-            'per_page' => $this->resource->perPage(),
-            'to' => $this->resource->lastItem(),
-            'total' => $this->resource->total(),
+            'from'         => $this->resource->firstItem(),
+            'last_page'    => $this->resource->lastPage(),
+            'path'         => $this->resource->path(),
+            'per_page'     => $this->resource->perPage(),
+            'to'           => $this->resource->lastItem(),
+            'total'        => $this->resource->total(),
         ];
     }
 
@@ -53,15 +53,15 @@ class UserCollection extends ResourceCollection
      */
     protected function links(): array
     {
-        if (!$this->resource instanceof AbstractPaginator) {
+        if (! $this->resource instanceof AbstractPaginator) {
             return [];
         }
 
         return [
             'first' => $this->resource->url(1),
-            'last' => $this->resource->url($this->resource->lastPage()),
-            'prev' => $this->resource->previousPageUrl(),
-            'next' => $this->resource->nextPageUrl(),
+            'last'  => $this->resource->url($this->resource->lastPage()),
+            'prev'  => $this->resource->previousPageUrl(),
+            'next'  => $this->resource->nextPageUrl(),
         ];
     }
 }

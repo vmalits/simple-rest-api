@@ -13,7 +13,7 @@ it('logs in successfully and returns a bearer token', function () {
     ]);
 
     $response = $this->postJson('/api/v1/login', [
-        'email' => 'vladimir@example.com',
+        'email'    => 'vladimir@example.com',
         'password' => 'password',
     ]);
 
@@ -32,18 +32,18 @@ it('validates input on login', function () {
         ->assertJsonValidationErrors(['email', 'password']);
 
     $this->postJson('/api/v1/login', [
-        'email' => 'not-an-email',
+        'email'    => 'not-an-email',
         'password' => 'short',
     ])->assertUnprocessable()
-      ->assertJsonValidationErrors(['email', 'password']);
+        ->assertJsonValidationErrors(['email', 'password']);
 });
 
 it('fails to login with incorrect credentials', function () {
     User::factory()->create(['email' => 'wrongpass@example.com']);
 
     $this->postJson('/api/v1/login', [
-        'email' => 'wrongpass@example.com',
+        'email'    => 'wrongpass@example.com',
         'password' => 'incorrect-password',
     ])->assertUnprocessable()
-      ->assertJsonValidationErrors(['email']);
+        ->assertJsonValidationErrors(['email']);
 });

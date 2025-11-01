@@ -10,7 +10,7 @@ final readonly class Result
 {
     public function __construct(
         public mixed $value = null,
-        public null|Throwable $error = null,
+        public ?Throwable $error = null,
     ) {
     }
 

@@ -10,7 +10,7 @@ uses(RefreshDatabase::class);
 
 function apiUrl(string $path): string
 {
-    return '/api/v1' . $path;
+    return '/api/v1'.$path;
 }
 
 it('requires authentication for users endpoints', function () {
@@ -18,16 +18,16 @@ it('requires authentication for users endpoints', function () {
         ->assertUnauthorized();
 
     $user = User::factory()->create();
-    $this->getJson(apiUrl('/users/' . $user->id))
+    $this->getJson(apiUrl('/users/'.$user->id))
         ->assertUnauthorized();
 
     $this->postJson(apiUrl('/users'), [])
         ->assertUnauthorized();
 
-    $this->putJson(apiUrl('/users/' . $user->id), [])
+    $this->putJson(apiUrl('/users/'.$user->id), [])
         ->assertUnauthorized();
 
-    $this->deleteJson(apiUrl('/users/' . $user->id))
+    $this->deleteJson(apiUrl('/users/'.$user->id))
         ->assertUnauthorized();
 });
 
@@ -55,21 +55,21 @@ it('shows a single user', function () {
 
     $user = User::factory()->create();
 
-    $this->getJson(apiUrl('/users/' . $user->id))
+    $this->getJson(apiUrl('/users/'.$user->id))
         ->assertOk()
         ->assertJson([
-            'id' => $user->id,
-            'name' => $user->name,
+            'id'    => $user->id,
+            'name'  => $user->name,
             'email' => [
-                'address' => $user->email,
+                'address'  => $user->email,
                 'verified' => false,
             ],
         ])
         ->assertJsonStructure([
             'id',
             'name',
-            'email' => ['address', 'verified'],
-            'created_at' => ['human', 'string']
+            'email'      => ['address', 'verified'],
+            'created_at' => ['human', 'string'],
         ]);
 });
 
@@ -77,9 +77,9 @@ it('creates a user', function () {
     Sanctum::actingAs(User::factory()->create());
 
     $payload = [
-        'name' => 'John Doe',
-        'email' => 'johndoe@gmail.com',
-        'password' => 'Password1!',
+        'name'                  => 'John Doe',
+        'email'                 => 'johndoe@gmail.com',
+        'password'              => 'Password1!',
         'password_confirmation' => 'Password1!',
     ];
 
@@ -90,13 +90,13 @@ it('creates a user', function () {
     $response->assertJsonStructure([
         'id',
         'name',
-        'email' => ['address', 'verified'],
-        'created_at' => ['human', 'string']
+        'email'      => ['address', 'verified'],
+        'created_at' => ['human', 'string'],
     ]);
 
     $this->assertDatabaseHas('users', [
         'email' => 'johndoe@gmail.com',
-        'name' => 'John Doe',
+        'name'  => 'John Doe',
     ]);
 });
 
@@ -112,21 +112,21 @@ it('updates a user', function () {
     $user = User::factory()->create();
 
     $payload = [
-        'name' => 'Updated Name',
+        'name'  => 'Updated Name',
         'email' => 'updated@example.com',
     ];
 
-    $this->putJson(apiUrl('/users/' . $user->id), $payload)
+    $this->putJson(apiUrl('/users/'.$user->id), $payload)
         ->assertOk()
         ->assertJsonFragment([
-            'id' => $user->id,
-            'name' => 'Updated Name',
+            'id'    => $user->id,
+            'name'  => 'Updated Name',
             'email' => 'updated@example.com',
         ]);
 
     $this->assertDatabaseHas('users', [
-        'id' => $user->id,
-        'name' => 'Updated Name',
+        'id'    => $user->id,
+        'name'  => 'Updated Name',
         'email' => 'updated@example.com',
     ]);
 });
@@ -136,7 +136,7 @@ it('deletes a user', function () {
 
     $user = User::factory()->create();
 
-    $this->deleteJson(apiUrl('/users/' . $user->id))
+    $this->deleteJson(apiUrl('/users/'.$user->id))
         ->assertNoContent();
 
     $this->assertDatabaseMissing('users', [
