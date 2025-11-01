@@ -6,7 +6,6 @@ namespace App\Http\Controllers\Auth\V1;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\V1\RegistrationRequest;
-use App\Http\Support\Result;
 use App\Responses\TokenResponse;
 use App\Services\IdentityService;
 use Knuckles\Scribe\Attributes\BodyParam;
@@ -38,7 +37,7 @@ final class RegisterController extends Controller
 
         return new TokenResponse(
             token: $result->value,
-            status: Response::HTTP_CREATED
+            status: Response::HTTP_CREATED,
         );
     }
 }

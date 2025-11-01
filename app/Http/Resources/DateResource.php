@@ -1,6 +1,6 @@
 <?php
 
-declare (strict_types=1);
+declare(strict_types=1);
 
 namespace App\Http\Resources;
 
@@ -13,7 +13,7 @@ class DateResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'human' => $this->resource->diffForHumans(),
+            'human'  => $this->resource->diffForHumans(),
             'string' => $this->resource->toDateTimeString(),
         ];
     }

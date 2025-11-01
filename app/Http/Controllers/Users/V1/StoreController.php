@@ -9,12 +9,12 @@ use App\Http\Requests\Users\V1\StoreRequest;
 use App\Http\Resources\Users\V1\UserResource;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
-use Symfony\Component\HttpFoundation\Response;
-use Knuckles\Scribe\Attributes\Group;
-use Knuckles\Scribe\Attributes\Endpoint;
 use Knuckles\Scribe\Attributes\Authenticated;
 use Knuckles\Scribe\Attributes\BodyParam;
+use Knuckles\Scribe\Attributes\Endpoint;
+use Knuckles\Scribe\Attributes\Group;
 use Knuckles\Scribe\Attributes\Response as ScribeResponse;
+use Symfony\Component\HttpFoundation\Response;
 
 #[Group('Users', 'Endpoints related to user management.')]
 final class StoreController extends Controller
@@ -26,17 +26,17 @@ final class StoreController extends Controller
     #[BodyParam('password', 'string', 'The user\'s password.', required: true, example: 'P@ssw0rd!23')]
     #[ScribeResponse([
         'data' => [
-            'id' => 1,
-            'name' => 'Alice Example',
+            'id'    => 1,
+            'name'  => 'Alice Example',
             'email' => 'alice@example.com',
         ],
     ], status: 201, description: 'User created successfully.')]
     #[ScribeResponse([
-        'message' => 'Unauthenticated.'
+        'message' => 'Unauthenticated.',
     ], status: 401, description: 'Unauthorized.')]
     #[ScribeResponse([
         'message' => 'The given data was invalid.',
-        'errors' => [
+        'errors'  => [
             'email' => ['The email has already been taken.'],
         ],
     ], status: 422, description: 'Validation error.')]
@@ -46,7 +46,7 @@ final class StoreController extends Controller
 
         return new JsonResponse(
             data: new UserResource($user),
-            status: Response::HTTP_CREATED
+            status: Response::HTTP_CREATED,
         );
     }
 }

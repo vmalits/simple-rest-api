@@ -19,8 +19,8 @@ class ListUsers
             ->allowedFilters(
                 filters: [
                     AllowedFilter::exact(name: 'name'),
-                    AllowedFilter::exact(name: 'email')
-                ]
+                    AllowedFilter::exact(name: 'email'),
+                ],
             )
             ->allowedSorts(sorts: ['name'])
             ->getEloquentBuilder();

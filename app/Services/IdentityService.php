@@ -12,6 +12,7 @@ use Illuminate\Database\DatabaseManager;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 use RuntimeException;
+use Throwable;
 
 readonly class IdentityService implements IdentityServiceContract
 {
@@ -23,39 +24,39 @@ readonly class IdentityService implements IdentityServiceContract
     {
         $user = User::query()->where('email', $loginData->email)->first();
 
-        if (!$user || !Hash::check($loginData->password, $user->password)) {
+        if (! $user || ! Hash::check($loginData->password, $user->password)) {
             throw ValidationException::withMessages([
                 'email' => ['The provided credentials are incorrect.'],
             ]);
         }
 
         return Result::ok(
-            value: $user->createToken('token')->plainTextToken
+            value: $user->createToken('token')->plainTextToken,
         );
     }
 
     /**
-     * @throws \Throwable
+     * @throws Throwable
      */
     public function register(RegistrationData $registrationData): Result
     {
         $user = $this->databaseManager->transaction(
-            callback: fn() => User::query()->create([
-                'name' => $registrationData->name,
-                'email' => $registrationData->email,
+            callback: fn () => User::query()->create([
+                'name'     => $registrationData->name,
+                'email'    => $registrationData->email,
                 'password' => $registrationData->password,
             ]),
-            attempts: 3
+            attempts: 3,
         );
 
-        if (!$user) {
+        if (! $user) {
             return Result::error(
-                error: new RuntimeException('Failed to create user.')
+                error: new RuntimeException('Failed to create user.'),
             );
         }
 
         return Result::ok(
-            value: $user->createToken('token')->plainTextToken
+            value: $user->createToken('token')->plainTextToken,
         );
     }
 }

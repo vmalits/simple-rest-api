@@ -9,11 +9,8 @@ use App\Http\Requests\Auth\V1\LoginRequest;
 use App\Responses\TokenResponse;
 use App\Services\IdentityService;
 use Illuminate\Contracts\Support\Responsable;
-use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 use Knuckles\Scribe\Attributes\BodyParam;
 use Knuckles\Scribe\Attributes\Group;
-use Symfony\Component\HttpFoundation\Response;
 
 #[Group('Auth')]
 final class LoginController extends Controller
@@ -33,7 +30,7 @@ final class LoginController extends Controller
         }
 
         return new TokenResponse(
-            token: $result->value
+            token: $result->value,
         );
     }
 }

@@ -21,22 +21,22 @@ final class ShowController extends Controller
     #[Authenticated]
     #[ScribeResponse([
         'data' => [
-            'id' => 1,
-            'name' => 'Alice Example',
+            'id'    => 1,
+            'name'  => 'Alice Example',
             'email' => 'alice@example.com',
         ],
     ], status: 200, description: 'User retrieved successfully.')]
     #[ScribeResponse([
-        'message' => 'Unauthenticated.'
+        'message' => 'Unauthenticated.',
     ], status: 401, description: 'Unauthorized.')]
     #[ScribeResponse([
-        'message' => 'No query results for model [App\\Models\\User] 999.'
+        'message' => 'No query results for model [App\\Models\\User] 999.',
     ], status: 404, description: 'User not found.')]
     public function __invoke(User $user): ModelResponse
     {
         return new ModelResponse(
             data: new UserResource(resource: $user),
-            status: Response::HTTP_OK
+            status: Response::HTTP_OK,
         );
     }
 }

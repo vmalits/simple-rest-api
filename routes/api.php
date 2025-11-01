@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 use App\Http\Controllers\Auth\V1\LoginController;
 use App\Http\Controllers\Auth\V1\RegisterController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['throttle:limit'])->group(static function (): void {
@@ -14,4 +13,3 @@ Route::middleware(['throttle:limit'])->group(static function (): void {
         Route::group(['middleware' => ['auth:sanctum']], base_path('routes/api/users.php'));
     });
 });
-

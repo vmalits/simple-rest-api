@@ -24,10 +24,10 @@ readonly class TokenResponse implements Responsable
         return new JsonResponse(
             data: [
                 'token' => $this->token,
-                'type' => 'Bearer',
+                'type'  => 'Bearer',
             ],
             status: $this->status,
-            headers: Headers::default()
+            headers: Headers::default(),
         );
     }
 }
